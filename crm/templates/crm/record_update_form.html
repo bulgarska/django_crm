@@ -1,0 +1,23 @@
+{% extends 'crm/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!-- class arg is for styling -->
+    <div class="content-section">
+        <form method="POST">
+            <!-- csrf_token required by Django, will not work otherwise -->
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <!-- bootstrap class -->
+                <legend class="border-bottom mb-4">Record Update</legend>
+                <!-- use crispy filter to syle form-->
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <a href="{% url 'record-detail' record.id %}" class="btn btn-secondary">Back</a>
+                <button class="btn btn-outline-info" type="submit">Update Record</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
